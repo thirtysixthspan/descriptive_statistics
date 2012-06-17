@@ -29,6 +29,12 @@ Examples
  => 6.0 
 ```
 
+Ports
+-----
+[Javascript](http://github.com/FGRibreau/descriptive_statistics)
+[Python](http://github.com/gleicon/py_descriptive_statistics)
+
+
 License
 -------
 Copyright (c) 2012 Derrick Parkhurst (derrick.parkhurst@gmail.com)
