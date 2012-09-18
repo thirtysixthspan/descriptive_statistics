@@ -8,6 +8,7 @@ Overview
 
 Examples
 --------
+
 ```
 > require 'descriptive_statistics'
  => true 
@@ -27,6 +28,22 @@ Examples
  => 2.778310325442932 
 > data.percentile(70)
  => 6.0 
+```
+
+Alternatively, you can use `DescriptiveStatistics` on individual 
+objects, avoiding a global monkey patch.
+
+```
+> require 'descriptive_statistics/safe'
+ => true
+> data = [2,6,9,3,5,1,8,3,6,9,2]
+ => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2] 
+> data.extend(DescriptiveStatistics)
+ => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2] 
+> data.number
+ => 11.0 
+> data.sum
+ => 54 
 ```
 
 Ports
