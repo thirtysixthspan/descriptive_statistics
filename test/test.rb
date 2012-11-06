@@ -14,7 +14,8 @@ class TestData < MiniTest::Unit::TestCase
   def test_sum
     @data.each do |test_case|
       assert_equal test_case[0,10].sum.round(6), test_case[10].round(6)
-    end  
+    end
+    assert_equal 0, [].sum
   end
 
   def test_mean
