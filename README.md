@@ -28,6 +28,10 @@ Examples
  => 2.778310325442932 
 > data.percentile(70)
  => 6.0 
+> data.percentile(70)
+ => 6.0 
+> [4,2,3,1,4,5,6,8,0].mode
+ => 4
 ```
 
 Alternatively, you can use `DescriptiveStatistics` on individual 
