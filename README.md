@@ -55,7 +55,10 @@ Ports
 
 License
 -------
-Copyright (c) 2012 Derrick Parkhurst (derrick.parkhurst@gmail.com), Gregory Brown (gregory.t.brown@gmail.com)
+Copyright (c) 2012 
+Derrick Parkhurst (derrick.parkhurst@gmail.com), 
+Gregory Brown (gregory.t.brown@gmail.com),
+Daniel Farrell (danielfarrell76@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
