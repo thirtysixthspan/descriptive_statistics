@@ -1,5 +1,5 @@
 module DescriptiveStatistics
   def mean
-    self.sum / self.number
+    self.number > 0 ? self.sum / self.number : 0
   end 
 end
