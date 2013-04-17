@@ -32,6 +32,8 @@ Examples
  => 6.0 
 > [4,2,3,1,4,5,6,8,0].mode
  => 4
+> [17, 5, 3, 23, 33, 30, 45, 37].range
+ => 42
 ```
 
 Alternatively, you can use `DescriptiveStatistics` on individual 
