@@ -61,4 +61,8 @@ class TestData < MiniTest::Unit::TestCase
     assert_equal [1,3,6,9,4,5,2,3,4,1,6,7,8,3,2,3,5,7,8,5,6,5,6,5,4,5,5,5].mode, 5
   end    
 
+  def test_range
+    assert_equal [17, 5, 3, 23, 33, 30, 45, 37].range, 42
+    assert_equal [].range, 0
+  end
 end
