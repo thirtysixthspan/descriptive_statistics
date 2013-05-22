@@ -58,6 +58,7 @@ Ports
 
 [Python](http://github.com/gleicon/py_descriptive_statistics)
 
+[Go](https://github.com/gleicon/go-descriptive-statistics)
 
 License
 -------
