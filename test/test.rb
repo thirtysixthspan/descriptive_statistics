@@ -84,4 +84,10 @@ class TestData < MiniTest::Unit::TestCase
       assert_equal test_case[0, 10].percentile(75), stat[:q3]
     end
   end
+  
+  def test_median_is_percentile50
+    @data.each do |test_case|
+      assert_equal test_case[0, 10].median, test_case[0, 10].percentile(50)
+    end
+  end
 end
