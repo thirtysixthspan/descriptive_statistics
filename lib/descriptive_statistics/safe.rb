@@ -7,3 +7,5 @@ require 'descriptive_statistics/variance.rb'
 require 'descriptive_statistics/standard_deviation.rb'
 require 'descriptive_statistics/percentile.rb'
 require 'descriptive_statistics/range.rb'
+require 'descriptive_statistics/descriptive_statistics.rb'
+

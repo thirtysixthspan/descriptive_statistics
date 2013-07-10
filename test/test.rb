@@ -64,5 +64,24 @@ class TestData < MiniTest::Unit::TestCase
   def test_range
     assert_equal [17, 5, 3, 23, 33, 30, 45, 37].range, 42
     assert_equal [].range, 0
+    assert_equal [1, 1.0].range, 0
+  end
+  
+  def test_descriptive_statistics
+    @data.each do |test_case|
+      stat = test_case[0, 10].descriptive_statistics
+      assert_equal test_case[0, 10].sum, stat[:sum]
+      assert_equal test_case[0, 10].mean, stat[:mean]
+      assert_equal test_case[0, 10].median, stat[:median]
+      assert_equal test_case[0, 10].variance, stat[:variance]
+      assert_equal test_case[0, 10].standard_deviation, stat[:standard_deviation]
+      assert_equal test_case[0, 10].mode, stat[:mode]
+      assert_equal test_case[0, 10].range, stat[:range]
+      assert_equal test_case[0, 10].min, stat[:min]
+      assert_equal test_case[0, 10].max, stat[:max]
+      assert_equal test_case[0, 10].percentile(25), stat[:q1]
+      assert_equal test_case[0, 10].percentile(50), stat[:q2]
+      assert_equal test_case[0, 10].percentile(75), stat[:q3]
+    end
   end
 end
