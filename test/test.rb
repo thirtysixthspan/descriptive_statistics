@@ -69,8 +69,6 @@ class TestData < MiniTest::Unit::TestCase
   
   def test_descriptive_statistics
     @data.each do |test_case|
-      #puts "test_case=#{test_case}"
-      #puts "test_case=#{test_case[0,10]}"
       stat = test_case[0, 10].descriptive_statistics
       assert_equal test_case[0, 10].sum, stat[:sum]
       assert_equal test_case[0, 10].mean, stat[:mean]
@@ -84,7 +82,6 @@ class TestData < MiniTest::Unit::TestCase
       assert_equal test_case[0, 10].percentile(25), stat[:q1]
       assert_equal test_case[0, 10].percentile(50), stat[:q2]
       assert_equal test_case[0, 10].percentile(75), stat[:q3]
-      puts test_case[0,10].percentile(100)
     end
   end
 end
