@@ -92,7 +92,8 @@ License
 Copyright (c) 2013 
 Derrick Parkhurst (derrick.parkhurst@gmail.com), 
 Gregory Brown (gregory.t.brown@gmail.com),
-Daniel Farrell (danielfarrell76@gmail.com)
+Daniel Farrell (danielfarrell76@gmail.com),
+Graham Malmgren
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
