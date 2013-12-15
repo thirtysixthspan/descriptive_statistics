@@ -87,6 +87,8 @@ Ports
 
 [Go](https://github.com/gleicon/go-descriptive-statistics)
 
+[Elixir](https://github.com/pusewicz/descriptive_statistics)
+
 License
 -------
 Copyright (c) 2013 
