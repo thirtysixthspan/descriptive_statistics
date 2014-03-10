@@ -89,6 +89,8 @@ Ports
 
 [Elixir](https://github.com/pusewicz/descriptive_statistics)
 
+[Clojure](https://github.com/nickmcdonnough/descriptivestatistics)
+
 License
 -------
 Copyright (c) 2013 
