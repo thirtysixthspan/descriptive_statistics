@@ -57,6 +57,12 @@ class TestData < MiniTest::Unit::TestCase
     end  
   end
 
+  def test_percentile_rank
+    @data.each do |test_case|
+      assert_equal test_case[0,10].percentile_rank(50).round(6), test_case[26].round(6)
+    end  
+  end
+
   def test_mode
     assert_equal [1,3,6,9,4,5,2,3,4,1,6,7,8,3,2,3,5,7,8,5,6,5,6,5,4,5,5,5].mode, 5
   end    
