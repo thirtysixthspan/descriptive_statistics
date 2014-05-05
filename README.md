@@ -15,7 +15,7 @@ descriptive statistics for a set of data:
 * Standard Deviation
 * Percentile - A method returning the value corresponding to the supplied percentile.
   For example, `data.percentile(50)` should equal `data.median`.
-* Percentile Rank - calculates the percentile of a given input value within the set of data. 
+* Percentile Rank - calculates the percentile rank of a given input value within the set of data. 
 * Descriptive statistics - A method returning a hash with the above keys (as symbols). 
   Percentile is represented as the first three quartes in the symbols `q1`, `q2` and 
   `q3`.
@@ -100,7 +100,8 @@ Copyright (c) 2013
 Derrick Parkhurst (derrick.parkhurst@gmail.com), 
 Gregory Brown (gregory.t.brown@gmail.com),
 Daniel Farrell (danielfarrell76@gmail.com),
-Graham Malmgren
+Graham Malmgren,
+Guy Shechter
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
