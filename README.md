@@ -15,6 +15,7 @@ descriptive statistics for a set of data:
 * Standard Deviation
 * Percentile - A method returning the value corresponding to the supplied percentile.
   For example, `data.percentile(50)` should equal `data.median`.
+* Percentile Rank - calculates the percentile of a given input value within the set of data. 
 * Descriptive statistics - A method returning a hash with the above keys (as symbols). 
   Percentile is represented as the first three quartes in the symbols `q1`, `q2` and 
   `q3`.
@@ -42,7 +43,9 @@ Examples
 > data.percentile(70)
  => 6.0 
 > data.percentile(70)
- => 6.0 
+ => 6.0
+> data.percentile_rank(8)
+ => 72.727272
 > data.descriptive_statistics
  => {:number=>11.0, 
   :sum=>54, 
