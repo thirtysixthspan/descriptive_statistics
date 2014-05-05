@@ -1,6 +1,6 @@
 module DescriptiveStatistics
+  # percent of cases that are at or below a score
   def percentile_rank(p)
-    sorted = self.sort
-    return sorted.find_index{ |x| x >= p} / sorted.length.to_f * 100.0
+    return (sort.rindex{ |x| x <= p} + 1.0) / number * 100.0
   end
 end
