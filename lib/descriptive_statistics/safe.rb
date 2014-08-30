@@ -1,3 +1,4 @@
+require "descriptive_statistics/support/convert"
 require 'descriptive_statistics/number.rb'
 require 'descriptive_statistics/sum.rb'
 require 'descriptive_statistics/mean.rb'

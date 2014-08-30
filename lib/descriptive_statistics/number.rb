@@ -1,5 +1,7 @@
 module DescriptiveStatistics
   def number
-    self.size.to_f
+    values = Support::extract(self)
+
+    values.size.to_f
   end
 end

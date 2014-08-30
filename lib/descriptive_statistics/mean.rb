@@ -1,5 +1,8 @@
 module DescriptiveStatistics
   def mean
-    self.sum / self.number
+    values = Support::convert(self)
+    return unless values.size > 0
+
+    values.sum / values.number
   end 
 end

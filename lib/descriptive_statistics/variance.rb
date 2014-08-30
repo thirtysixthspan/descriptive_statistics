@@ -1,6 +1,9 @@
 module DescriptiveStatistics
   def variance
-    mean = self.mean
-    self.map{ |sample| (mean - sample) ** 2 }.sum / self.number
+    values = Support::convert(self)
+    return unless values.size > 0
+
+    mean = values.mean
+    values.map{ |sample| (mean - sample) ** 2 }.inject(:+) / values.number
   end
 end

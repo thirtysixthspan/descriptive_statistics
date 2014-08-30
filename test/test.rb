@@ -74,7 +74,7 @@ class TestData < MiniTest::Unit::TestCase
 
   def test_range
     assert_equal [17, 5, 3, 23, 33, 30, 45, 37].range, 42
-    assert_equal [].range, 0
+    assert_equal [].range, nil
     assert_equal [1, 1.0].range, 0
   end
   

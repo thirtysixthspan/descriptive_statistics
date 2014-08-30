@@ -1,6 +1,6 @@
 module DescriptiveStatistics
   def descriptive_statistics
-    return { :number => self.size.to_f,
+    return { :number => self.number,
              :sum => self.sum,
              :variance => self.variance,
              :standard_deviation => self.standard_deviation,

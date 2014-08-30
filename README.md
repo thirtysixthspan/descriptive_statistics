@@ -5,24 +5,22 @@ Overview
 --------
 
 This gem adds methods to the Enumerable module to allow easy calculation of basic 
-descriptive statistics for a set of data:
-* Number - the sample size
+descriptive statistics of Numeric sample data in collections that have included Enumerable such as Array, Hash, Set, and Range. The statistics that can be calculated are:
+* Number
 * Sum
 * Mean
 * Median
 * Mode
 * Variance
 * Standard Deviation
-* Percentile - A method returning the value corresponding to the supplied percentile.
-  For example, `data.percentile(50)` should equal `data.median`.
-* Percentile Rank - calculates the percentile rank of a given input value within the set of data. 
-* Descriptive statistics - A method returning a hash with the above keys (as symbols). 
-  Percentile is represented as the first three quartes in the symbols `q1`, `q2` and 
-  `q3`.
-  
-Examples
---------
+* Percentile
+* Percentile Rank
+* Descriptive Statistics
+* Quartiles
 
+
+When requiring DescriptiveStatistics, the Enumerable module is monkey patched so
+that the statistical methods are available on any instance of a class that has included Enumerable. For example with an Array:
 ```
 > require 'descriptive_statistics'
  => true 
@@ -31,7 +29,7 @@ Examples
 > data.number
  => 11.0 
 > data.sum
- => 54 
+ => 54.0
 > data.mean
  => 4.909090909090909 
 > data.median
@@ -40,12 +38,16 @@ Examples
  => 7.7190082644628095 
 > data.standard_deviation
  => 2.778310325442932 
-> data.percentile(70)
- => 6.0 
+> data.percentile(30)
+ => 3.0 
 > data.percentile(70)
  => 6.0
 > data.percentile_rank(8)
- => 72.727272
+ => 81.81818181818183
+> data.mode
+ => 2
+> data.range
+ => 8
 > data.descriptive_statistics
  => {:number=>11.0, 
   :sum=>54, 
@@ -56,19 +58,84 @@ Examples
   :mean=>4.909090909090909, 
   :mode=>2, 
   :median=>5.0, 
-  :range=>8, 
+  :range=>8.0, 
   :q1=>2.5, 
   :q2=>5.0, 
   :q3=>7.0}
-> [4,2,3,1,4,5,6,8,0].mode
- => 4
-> [17, 5, 3, 23, 33, 30, 45, 37].range
- => 42
 ```
 
-Alternatively, you can use `DescriptiveStatistics` on individual 
-objects, avoiding a global monkey patch.
+and with other types of objects:
+```
+> require 'set'
+=> true 
+> require 'descriptive_statistics'
+=> true 
+> {:a=>1, :b=>2, :c=>3, :d=>4, :e=>5}.mean #Hash
+=> 3.0 
+> Set.new([1,2,3,4,5]).mean #Set
+=> 3.0 
+> (1..5).mean #Range
+=> 3.0 
+```
 
+including instances of your own classes, when an `each` method is provided that 
+creates an Enumerator over the sample data to be operated upon:
+```
+class Foo 
+  include Enumerable
+  attr_accessor :bar, :baz, :bat
+
+  def each
+    [@bar, @baz, @bat].each
+  end
+end
+
+foo = Foo.new
+foo.bar = 1
+foo.baz = 2
+foo.bat = 3
+foo.mean
+=> 2.0
+
+```
+
+or:
+```
+class Foo 
+  include Enumerable
+  attr_accessor :bar, :baz, :bat
+
+  def each
+    Enumerator.new do |y|
+      y << @bar
+      y << @baz
+      y << @bat
+    end
+  end
+end
+
+foo = Foo.new
+foo.bar = 1
+foo.baz = 2
+foo.bat = 3
+foo.mean
+=> 2.0
+```
+
+and even Structs:
+```
+Scores = Struct.new(:sally, :john, :peter)
+bowling = Scores.new
+bowling.sally = 203
+bowling.john = 134
+bowling.peter = 233
+bowling.mean
+=> 190.0
+``` 
+
+
+Alternatively, you can extend DescriptiveStatistics on individual objects by 
+requiring DescriptiveStatistics safely, thus avoiding the monkey patch. For example:
 ```
 > require 'descriptive_statistics/safe'
  => true
@@ -81,6 +148,13 @@ objects, avoiding a global monkey patch.
 > data.sum
  => 54 
 ```
+
+
+Notes
+-----
+* All methods return a Float object except for `mode`, which will return a Numeric object from the collection.
+* All methods return nil when the collection is empty, except for `number`, which returns 0.0 (This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0. This may be an issue for you if you are using Rails.)
+
 
 Ports
 -----
@@ -96,7 +170,7 @@ Ports
 
 License
 -------
-Copyright (c) 2013 
+Copyright (c) 2010-2014 
 Derrick Parkhurst (derrick.parkhurst@gmail.com), 
 Gregory Brown (gregory.t.brown@gmail.com),
 Daniel Farrell (danielfarrell76@gmail.com),

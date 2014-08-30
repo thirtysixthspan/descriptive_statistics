@@ -1,5 +1,8 @@
 module DescriptiveStatistics
   def sum 
-    return self.inject(:+)
+    values = Support::convert(self)
+    return unless values.size > 0
+
+    return values.inject(:+)
   end 
 end
