@@ -153,7 +153,7 @@ requiring DescriptiveStatistics safely, thus avoiding the monkey patch. For exam
 Notes
 -----
 * All methods return a Float object except for `mode`, which will return a Numeric object from the collection.
-* All methods return nil when the collection is empty, except for `number`, which returns 0.0 (This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0. This may be an issue for you if you are using Rails.)
+* All methods return nil when the collection is empty, except for `number`, which returns 0.0 (This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0 for empty collections. This may be an issue for you if you are using Rails.)
 
 
 Ports
