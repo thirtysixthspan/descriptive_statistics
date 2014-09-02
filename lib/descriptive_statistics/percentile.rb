@@ -3,6 +3,8 @@ module DescriptiveStatistics
     values = Support::convert(self)
     return unless values.size > 0
 
+    return values.first unless values.size > 1
+
     sorted = values.sort
     return sorted[-1] if p == 100        
     rank = p / 100.0 * (values.number - 1) 

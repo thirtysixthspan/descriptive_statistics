@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'descriptive_statistics'
-  s.version     = '2.0.0'
+  s.version     = '2.0.1'
   s.homepage    = 'https://github.com/thirtysixthspan/descriptive_statistics'
   s.summary     = 'Descriptive Statistics'
   s.description = 'Adds descriptive statistics methods to Enumerable module for use on collections or Numeric data'
