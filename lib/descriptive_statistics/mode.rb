@@ -1,6 +1,6 @@
 module DescriptiveStatistics
-  def mode
-    values = Support::extract(self)
+  def mode(collection = self)
+    values = Support::extract(collection)
     return unless values.size > 0
 
     values

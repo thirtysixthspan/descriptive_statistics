@@ -1,6 +1,6 @@
 module DescriptiveStatistics
-  def variance
-    values = Support::convert(self)
+  def variance(collection = self)
+    values = Support::convert(collection)
     return unless values.size > 0
 
     mean = values.mean

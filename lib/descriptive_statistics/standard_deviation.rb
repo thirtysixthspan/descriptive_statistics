@@ -1,6 +1,6 @@
 module DescriptiveStatistics
-  def standard_deviation
-    values = Support::convert(self)
+  def standard_deviation(collection = self)
+    values = Support::convert(collection)
     return unless values.size > 0
 
     Math.sqrt(values.variance)

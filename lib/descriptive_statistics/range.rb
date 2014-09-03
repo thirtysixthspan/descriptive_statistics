@@ -1,6 +1,6 @@
 module DescriptiveStatistics
-  def range
-    values = Support::convert(self)
+  def range(collection = self)
+    values = Support::convert(collection)
     return unless values.size > 0
 
     values.max - values.min

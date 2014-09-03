@@ -149,18 +149,41 @@ requiring DescriptiveStatistics safely, thus avoiding the monkey patch. For exam
  => 54 
 ```
 
-Or if you prefer leaving your collection pristine
+Or, if you prefer leaving your collection pristine, you can create a 
+Stats object that references your collection:
 ```
 > require 'descriptive_statistics/safe'
  => true 
-> stats = DescriptiveStatistics::Stats.new([1,2,3,4,5,1])
- => #<DescriptiveStatistics::Stats:0x00000101a38228 @collection=[1, 2, 3, 4, 5, 1]> 
+> data = [1, 2, 3, 4, 5, 1]
+ => [1, 2, 3, 4, 5, 1] 
+> stats = DescriptiveStatistics::Stats.new(data)
+ => [1, 2, 3, 4, 5, 1] 
+> stats.class
+ => DescriptiveStatistics::Stats 
 > stats.mean
  => 2.6666666666666665 
 > stats.median
  => 2.5 
 > stats.mode
  => 1 
+> data << 2
+ => [1, 2, 3, 4, 5, 1, 2] 
+> data << 2
+ => [1, 2, 3, 4, 5, 1, 2, 2] 
+> stats.mode
+ => 2
+```
+
+Or you call the statistical methods directly:
+```
+> require 'descriptive_statistics/safe'
+ => true 
+> DescriptiveStatistics.mean([1,2,3,4,5])
+ => 3.0 
+> DescriptiveStatistics.mode([1,2,3,4,5])
+ => 1 
+> DescriptiveStatistics.variance([1,2,3,4,5])
+ => 2.0 
 ```
 
 Notes

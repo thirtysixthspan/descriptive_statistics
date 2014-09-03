@@ -1,18 +1,9 @@
-require 'forwardable'
+require 'delegate'
 
 module DescriptiveStatistics
 
-  class Stats
-    extend Forwardable
-
-    DescriptiveStatistics.instance_methods.each do |m|
-      def_delegator :@collection, m 
-    end
-
-    def initialize(collection)
-      @collection = collection.clone.extend(DescriptiveStatistics)
-    end
-
+  class Stats < SimpleDelegator
+    include DescriptiveStatistics
   end
 
 end
