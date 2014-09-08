@@ -190,7 +190,7 @@ Notes
 -----
 * All methods return a Float object except for `mode`, which will return a Numeric object from the collection. `mode` will always return nil for empty collections.
 * All methods return nil when the collection is empty, except for `number`, which returns 0.0. This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0 for empty collections. You can change this behavior by specifying the default value returned for empty collections:
-```
+  ```
 > require 'descriptive_statistics'
  => true 
 > [].mean
@@ -203,7 +203,13 @@ Notes
  => 0.0 
 > [].sum
  => 0.0 
- ```
+  ```
+
+* The scope of this gem covers [Descriptive Statistics](http://en.wikipedia.org/wiki/Descriptive_statistics) and not Inferential Statistics. From wikipedia:
+
+  > Descriptive statistics is the discipline of quantitatively describing the main features of a collection of information, or the quantitative description itself. Descriptive statistics are distinguished from inferential statistics, in that descriptive statistics aim to summarize a sample, rather than use the data to learn about the population that the sample of data is thought to represent.
+
+  Thus, all statistics calculated herein describe only the values in the collection. Where this makes a practical difference is in the calculation of variance (and thus the standard deviation which is derived from variance). We use the [population variance](http://en.wikipedia.org/wiki/Variance#Population_variance) to calculate the variance of the values in the collection. If the values in your collection represent a sampling from a larger population of values, and your goal is to estimate the population variance from your sample, you should use the inferential statistic, [sample variance](http://en.wikipedia.org/wiki/Variance#Sample_variance). However, the calculation of the sample variance is outside the scope of this gem's functionality. 
 
 
 Ports
