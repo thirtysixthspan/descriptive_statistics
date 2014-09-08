@@ -29,12 +29,20 @@ describe "DescriptiveStatistics" do
       expect(subject.median).to eql(5.0)
     end
 
-    it "calculates the variance" do
+    it "calculates the [population] variance" do
       expect(subject.variance).to eql(7.836734693877552)
     end
 
-    it "calculates the standard_deviation" do
+    it "calculates the sample_variance" do
+      expect(subject.sample_variance).to eql(9.142857142857144)
+    end
+
+    it "calculates the [population] standard_deviation" do
       expect(subject.standard_deviation).to eql(2.799416848895061)
+    end
+
+    it "calculates the sample_standard_deviation" do
+      expect(subject.sample_standard_deviation).to eql(3.023715784073818)
     end
 
     it "calculates the percentile" do
