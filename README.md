@@ -189,7 +189,7 @@ Or you call the statistical methods directly:
 Notes
 -----
 * All methods return a Float object except for `mode`, which will return a Numeric object from the collection. `mode` will always return nil for empty collections.
-* All methods return nil when the collection is empty, except for `number`, which returns 0.0. This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0 for empty collections. You can change this behavior by specifying the default value returned for empty collections:
+* All methods return nil when the collection is empty, except for `number`, which returns 0.0. This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0 for empty collections. You can change this behavior by specifying the default value returned for empty collections all at once:
   ```
 > require 'descriptive_statistics'
  => true 
@@ -198,6 +198,27 @@ Notes
 > [].sum
  => nil 
 > DescriptiveStatistics.empty_collection_default_value = 0.0
+ => 0.0 
+> [].mean
+ => 0.0 
+> [].sum
+ => 0.0 
+  ```
+  or one at a time:
+  ```
+> require 'descriptive_statistics'
+ => true 
+> [].mean
+ => nil 
+> [].sum
+ => nil 
+> DescriptiveStatistics.sum_empty_collection_default_value = 0.0
+ => 0.0 
+> [].mean
+ => nil 
+> [].sum
+ => 0.0 
+> DescriptiveStatistics.mean_empty_collection_default_value = 0.0
  => 0.0 
 > [].mean
  => 0.0 
