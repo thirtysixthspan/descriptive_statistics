@@ -7,10 +7,8 @@ describe "DescriptiveStatistics" do
 
   context "with a set" do
 
-    it "responds to all statistics methods" do
-      DescriptiveStatistics.instance_methods.each do |method|
-        expect(subject).respond_to? method
-      end
+    it "includes the statistics module" do
+      Array.include?(DescriptiveStatistics)
     end
 
     it "calculates the number" do
