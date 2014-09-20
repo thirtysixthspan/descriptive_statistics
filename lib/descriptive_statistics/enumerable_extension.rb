@@ -4,8 +4,10 @@ module Enumerable
   # This is necessary because otherwise objects which
   # have already included Enumerable (such as Array) won't
   # be able to access DescriptiveStatistics's methods.
-  # It is an evil hack though :-/
-  DescriptiveStatistics.instance_methods.each do |m|
-    define_method(m, DescriptiveStatistics.instance_method(m))
-  end
+  # This is known as Dynamic Module Include Problem.
+  ObjectSpace.each_object(::Module).select { |mod|
+    mod.include? self
+  }.each { |mod|
+    mod.module_eval { include DescriptiveStatistics }
+  }
 end
