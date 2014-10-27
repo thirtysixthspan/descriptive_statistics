@@ -1,8 +1,8 @@
 module DescriptiveStatistics
   def mode(collection = self)
-    values = Support::extract(collection)
-    return unless values.size > 0
+    return if collection.empty?
 
+    values = Support::extract(collection)
     values
       .group_by { |e| e }
       .values
