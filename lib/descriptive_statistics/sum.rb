@@ -4,5 +4,5 @@ module DescriptiveStatistics
     return DescriptiveStatistics.sum_empty_collection_default_value if values.empty?
 
     return values.inject(:+)
-  end 
+  end
 end

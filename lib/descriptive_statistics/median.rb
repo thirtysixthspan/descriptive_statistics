@@ -4,5 +4,5 @@ module DescriptiveStatistics
     return DescriptiveStatistics.median_empty_collection_default_value if values.empty?
 
     values.percentile(50)
-  end 
+  end
 end

@@ -8,5 +8,5 @@ module DescriptiveStatistics
       .values
       .max_by(&:size)
       .first
-  end 
+  end
 end
