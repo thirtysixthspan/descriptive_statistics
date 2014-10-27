@@ -4,6 +4,6 @@ module DescriptiveStatistics
     return DescriptiveStatistics.variance_empty_collection_default_value if values.empty?
 
     mean = values.mean
-    values.map { |sample| (mean - sample) ** 2 }.inject(:+) / values.number
+    values.map { |sample| (mean - sample) ** 2 }.reduce(:+) / values.number
   end
 end
