@@ -3,7 +3,7 @@ require 'rspec'
 describe "DescriptiveStatistics" do
   require 'descriptive_statistics'
 
-  class Foo 
+  class Foo
     include Enumerable
     attr_accessor :bar, :baz, :bat
 

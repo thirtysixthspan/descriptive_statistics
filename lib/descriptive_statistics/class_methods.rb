@@ -17,7 +17,7 @@ module DescriptiveStatistics
       end
       define_method("#{m}_empty_collection_default_value=") do |value|
         default_values[m] = value
-      end      
+      end
     end
 
     DescriptiveStatistics.instance_methods.each do |m|
@@ -27,7 +27,7 @@ module DescriptiveStatistics
     private
 
     def default_values
-      @default_values ||= {} 
+      @default_values ||= {}
     end
 
   end

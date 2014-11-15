@@ -15,7 +15,7 @@ module DescriptiveStatistics
     private
 
     def self.extend(enumerable)
-      enumerable.extend(DescriptiveStatistics) 
+      enumerable.extend(DescriptiveStatistics)
     end
 
     def self.to_float(enumerable)
