@@ -262,7 +262,8 @@ Derrick Parkhurst (derrick.parkhurst@gmail.com),
 Gregory Brown (gregory.t.brown@gmail.com),
 Daniel Farrell (danielfarrell76@gmail.com),
 Graham Malmgren,
-Guy Shechter
+Guy Shechter,
+Charlie Egan (charlieegan3@googlemail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
