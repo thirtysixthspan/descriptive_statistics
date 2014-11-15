@@ -20,16 +20,17 @@ module DescriptiveStatistics
       end
     end
 
-    DescriptiveStatistics.instance_methods.each do |m|
-      define_method(m, DescriptiveStatistics.instance_method(m))
-    end
-
     private
 
     def default_values
       @default_values ||= {}
     end
 
+  end
+
+  DescriptiveStatistics.instance_methods.each do |method|
+    module_function method
+    public method
   end
 
 end
