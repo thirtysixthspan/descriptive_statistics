@@ -1,6 +1,6 @@
 module DescriptiveStatistics
-  def percentile(p, collection = self)
-    values = Support::convert(collection)
+  def percentile(p, collection = self, &block)
+    values = Support::convert(collection, &block)
 
     return DescriptiveStatistics.percentile_empty_collection_default_value if values.empty?
     return values.first if values.size == 1

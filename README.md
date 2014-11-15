@@ -4,7 +4,7 @@ Descriptive Statistics
 Overview
 --------
 
-This gem adds methods to the Enumerable module to allow easy calculation of basic 
+This gem adds methods to the Enumerable module to allow easy calculation of basic
 descriptive statistics of Numeric sample data in collections that have included Enumerable such as Array, Hash, Set, and Range. The statistics that can be calculated are:
 * Number
 * Sum
@@ -23,23 +23,23 @@ When requiring DescriptiveStatistics, the Enumerable module is monkey patched so
 that the statistical methods are available on any instance of a class that has included Enumerable. For example with an Array:
 ```
 > require 'descriptive_statistics'
- => true 
+ => true
 > data = [2,6,9,3,5,1,8,3,6,9,2]
- => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2] 
+ => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
 > data.number
- => 11.0 
+ => 11.0
 > data.sum
  => 54.0
 > data.mean
- => 4.909090909090909 
+ => 4.909090909090909
 > data.median
- => 5.0 
+ => 5.0
 > data.variance
- => 7.7190082644628095 
+ => 7.7190082644628095
 > data.standard_deviation
- => 2.778310325442932 
+ => 2.778310325442932
 > data.percentile(30)
- => 3.0 
+ => 3.0
 > data.percentile(70)
  => 6.0
 > data.percentile_rank(8)
@@ -49,39 +49,39 @@ that the statistical methods are available on any instance of a class that has i
 > data.range
  => 8
 > data.descriptive_statistics
- => {:number=>11.0, 
-  :sum=>54, 
-  :variance=>7.7190082644628095, 
-  :standard_deviation=>2.778310325442932, 
-  :min=>1, 
-  :max=>9, 
-  :mean=>4.909090909090909, 
-  :mode=>2, 
-  :median=>5.0, 
-  :range=>8.0, 
-  :q1=>2.5, 
-  :q2=>5.0, 
+ => {:number=>11.0,
+  :sum=>54,
+  :variance=>7.7190082644628095,
+  :standard_deviation=>2.778310325442932,
+  :min=>1,
+  :max=>9,
+  :mean=>4.909090909090909,
+  :mode=>2,
+  :median=>5.0,
+  :range=>8.0,
+  :q1=>2.5,
+  :q2=>5.0,
   :q3=>7.0}
 ```
 
 and with other types of objects:
 ```
 > require 'set'
-=> true 
+=> true
 > require 'descriptive_statistics'
-=> true 
+=> true
 > {:a=>1, :b=>2, :c=>3, :d=>4, :e=>5}.mean #Hash
-=> 3.0 
+=> 3.0
 > Set.new([1,2,3,4,5]).mean #Set
-=> 3.0 
+=> 3.0
 > (1..5).mean #Range
-=> 3.0 
+=> 3.0
 ```
 
-including instances of your own classes, when an `each` method is provided that 
+including instances of your own classes, when an `each` method is provided that
 creates an Enumerator over the sample data to be operated upon:
 ```
-class Foo 
+class Foo
   include Enumerable
   attr_accessor :bar, :baz, :bat
 
@@ -101,7 +101,7 @@ foo.mean
 
 or:
 ```
-class Foo 
+class Foo
   include Enumerable
   attr_accessor :bar, :baz, :bat
 
@@ -131,45 +131,55 @@ bowling.john = 134
 bowling.peter = 233
 bowling.mean
 => 190.0
-``` 
+```
 
+All methods optionally take blocks that operate on object values. For example:
+```
+> require 'descriptive_statistics'
+> LineItem = Struct.new(:price, :quantity)
+> cart = [ LineItem.new(2.50, 2), Item.new(5.10, 9), Item.new(4.00, 5) ]
+> total_items = cart.sum(&:quantity)
+ => 16
+> total_price = cart.sum{ |i| i.price * i.quantity }
+ => 70.9
+```
 
-Alternatively, you can extend DescriptiveStatistics on individual objects by 
+Note that you can extend DescriptiveStatistics on individual objects by
 requiring DescriptiveStatistics safely, thus avoiding the monkey patch. For example:
 ```
 > require 'descriptive_statistics/safe'
  => true
 > data = [2,6,9,3,5,1,8,3,6,9,2]
- => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2] 
+ => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
 > data.extend(DescriptiveStatistics)
- => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2] 
+ => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
 > data.number
- => 11.0 
+ => 11.0
 > data.sum
- => 54 
+ => 54
 ```
 
-Or, if you prefer leaving your collection pristine, you can create a 
+Or, if you prefer leaving your collection pristine, you can create a
 Stats object that references your collection:
 ```
 > require 'descriptive_statistics/safe'
- => true 
+ => true
 > data = [1, 2, 3, 4, 5, 1]
- => [1, 2, 3, 4, 5, 1] 
+ => [1, 2, 3, 4, 5, 1]
 > stats = DescriptiveStatistics::Stats.new(data)
- => [1, 2, 3, 4, 5, 1] 
+ => [1, 2, 3, 4, 5, 1]
 > stats.class
- => DescriptiveStatistics::Stats 
+ => DescriptiveStatistics::Stats
 > stats.mean
- => 2.6666666666666665 
+ => 2.6666666666666665
 > stats.median
- => 2.5 
+ => 2.5
 > stats.mode
- => 1 
+ => 1
 > data << 2
- => [1, 2, 3, 4, 5, 1, 2] 
+ => [1, 2, 3, 4, 5, 1, 2]
 > data << 2
- => [1, 2, 3, 4, 5, 1, 2, 2] 
+ => [1, 2, 3, 4, 5, 1, 2, 2]
 > stats.mode
  => 2
 ```
@@ -177,13 +187,13 @@ Stats object that references your collection:
 Or you call the statistical methods directly:
 ```
 > require 'descriptive_statistics/safe'
- => true 
+ => true
 > DescriptiveStatistics.mean([1,2,3,4,5])
- => 3.0 
+ => 3.0
 > DescriptiveStatistics.mode([1,2,3,4,5])
- => 1 
+ => 1
 > DescriptiveStatistics.variance([1,2,3,4,5])
- => 2.0 
+ => 2.0
 ```
 
 Notes
@@ -192,45 +202,45 @@ Notes
 * All methods return nil when the collection is empty, except for `number`, which returns 0.0. This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0 for empty collections. You can change this behavior by specifying the default value returned for empty collections all at once:
   ```
 > require 'descriptive_statistics'
- => true 
+ => true
 > [].mean
- => nil 
+ => nil
 > [].sum
- => nil 
+ => nil
 > DescriptiveStatistics.empty_collection_default_value = 0.0
- => 0.0 
+ => 0.0
 > [].mean
- => 0.0 
+ => 0.0
 > [].sum
- => 0.0 
+ => 0.0
   ```
   or one at a time:
   ```
 > require 'descriptive_statistics'
- => true 
+ => true
 > [].mean
- => nil 
+ => nil
 > [].sum
- => nil 
+ => nil
 > DescriptiveStatistics.sum_empty_collection_default_value = 0.0
- => 0.0 
+ => 0.0
 > [].mean
- => nil 
+ => nil
 > [].sum
- => 0.0 
+ => 0.0
 > DescriptiveStatistics.mean_empty_collection_default_value = 0.0
- => 0.0 
+ => 0.0
 > [].mean
- => 0.0 
+ => 0.0
 > [].sum
- => 0.0 
+ => 0.0
   ```
 
 * The scope of this gem covers [Descriptive Statistics](http://en.wikipedia.org/wiki/Descriptive_statistics) and not Inferential Statistics. From wikipedia:
 
   > Descriptive statistics is the discipline of quantitatively describing the main features of a collection of information, or the quantitative description itself. Descriptive statistics are distinguished from inferential statistics, in that descriptive statistics aim to summarize a sample, rather than use the data to learn about the population that the sample of data is thought to represent.
 
-  Thus, all statistics calculated herein describe only the values in the collection. Where this makes a practical difference is in the calculation of variance (and thus the standard deviation which is derived from variance). We use the [population variance](http://en.wikipedia.org/wiki/Variance#Population_variance) to calculate the variance of the values in the collection. If the values in your collection represent a sampling from a larger population of values, and your goal is to estimate the population variance from your sample, you should use the inferential statistic, [sample variance](http://en.wikipedia.org/wiki/Variance#Sample_variance). However, the calculation of the sample variance is outside the scope of this gem's functionality. 
+  Thus, all statistics calculated herein describe only the values in the collection. Where this makes a practical difference is in the calculation of variance (and thus the standard deviation which is derived from variance). We use the [population variance](http://en.wikipedia.org/wiki/Variance#Population_variance) to calculate the variance of the values in the collection. If the values in your collection represent a sampling from a larger population of values, and your goal is to estimate the population variance from your sample, you should use the inferential statistic, [sample variance](http://en.wikipedia.org/wiki/Variance#Sample_variance). However, the calculation of the sample variance is outside the scope of this gem's functionality.
 
 
 Ports
@@ -247,8 +257,8 @@ Ports
 
 License
 -------
-Copyright (c) 2010-2014 
-Derrick Parkhurst (derrick.parkhurst@gmail.com), 
+Copyright (c) 2010-2014
+Derrick Parkhurst (derrick.parkhurst@gmail.com),
 Gregory Brown (gregory.t.brown@gmail.com),
 Daniel Farrell (danielfarrell76@gmail.com),
 Graham Malmgren,

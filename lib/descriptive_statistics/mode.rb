@@ -1,6 +1,6 @@
 module DescriptiveStatistics
-  def mode(collection = self)
-    values = Support::extract(collection)
+  def mode(collection = self, &block)
+    values = Support::extract(collection, &block)
     return if values.to_a.empty?
 
     values

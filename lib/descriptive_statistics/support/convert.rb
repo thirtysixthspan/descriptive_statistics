@@ -4,12 +4,12 @@ module DescriptiveStatistics
 
   module Support
 
-    def self.convert(from_enumerable)
-      extend to_float to_array from_enumerable
+    def self.convert(from_enumerable, &block)
+      extend to_float to_value(to_array(from_enumerable), &block)
     end
 
-    def self.extract(from_enumerable)
-      extend to_array from_enumerable
+    def self.extract(from_enumerable, &block)
+      extend to_value(to_array(from_enumerable), &block)
     end
 
     private
@@ -20,6 +20,11 @@ module DescriptiveStatistics
 
     def self.to_float(enumerable)
       enumerable.map(&:to_f)
+    end
+
+    def self.to_value(enumerable, &block)
+      return enumerable unless block_given?
+      enumerable.map { |object| yield object }
     end
 
     def self.to_array(enumerable)
