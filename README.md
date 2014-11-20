@@ -196,6 +196,23 @@ Or you call the statistical methods directly:
  => 2.0
 ```
 
+Ruby on Rails
+-------------
+
+To use DescriptiveStatistics with Ruby on Rails add DescriptiveStatistics to your Gemfile, requiring the safe extension.
+```
+source 'https://rubygems.org'
+
+gem 'rails', '4.1.7'
+gem 'descriptive_statistics', '~> 2.4.0', :require => 'descriptive_statistics/safe'
+```
+Then after a `bundle install`, you can extend DescriptiveStatistics on an individual collection and call the statistical methods as needed.
+```
+users = User.all.extend(DescriptiveStatistics)
+mean_age = users.mean(&:age) # => 19.428571428571427
+mean_age_in_dog_years = users.mean { |user| user.age / 7.0 } # => 2.7755102040816326
+```
+
 Notes
 -----
 * All methods return a Float object except for `mode`, which will return a Numeric object from the collection. `mode` will always return nil for empty collections.
