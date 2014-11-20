@@ -137,7 +137,7 @@ All methods optionally take blocks that operate on object values. For example:
 ```
 > require 'descriptive_statistics'
 > LineItem = Struct.new(:price, :quantity)
-> cart = [ LineItem.new(2.50, 2), Item.new(5.10, 9), Item.new(4.00, 5) ]
+> cart = [ LineItem.new(2.50, 2), LineItem.new(5.10, 9), LineItem.new(4.00, 5) ]
 > total_items = cart.sum(&:quantity)
  => 16
 > total_price = cart.sum{ |i| i.price * i.quantity }
