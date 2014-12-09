@@ -1,4 +1,4 @@
-require 'rspec'
+require 'spec_helper'
 
 describe "DescriptiveStatistics" do
   require 'descriptive_statistics'
@@ -59,6 +59,10 @@ describe "DescriptiveStatistics" do
 
     before do
       DescriptiveStatistics.empty_collection_default_value = 0.0
+    end
+
+    it "sets a default" do
+      expect(DescriptiveStatistics.empty_collection_default_value).to eql(0.0)
     end
 
     it "calculates the number" do

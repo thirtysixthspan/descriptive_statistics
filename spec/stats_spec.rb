@@ -1,4 +1,4 @@
-require 'rspec'
+require 'spec_helper'
 
 describe "DescriptiveStatistics::Stats" do
   require 'descriptive_statistics/safe'

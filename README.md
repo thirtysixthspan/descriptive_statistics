@@ -1,5 +1,7 @@
 Descriptive Statistics
 ===============
+[![Gem Version](https://badge.fury.io/rb/descriptive_statistics.svg)](http://badge.fury.io/rb/descriptive_statistics)
+[![Build Status](https://travis-ci.org/thirtysixthspan/descriptive_statistics.svg?branch=master)](https://travis-ci.org/thirtysixthspan/descriptive_statistics)
 
 Overview
 --------
