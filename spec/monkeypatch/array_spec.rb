@@ -1,11 +1,17 @@
-require 'spec_helper'
+require 'monkeypatch/spec_helper'
 
-describe "DescriptiveStatistics::Stats" do
-  require 'descriptive_statistics/safe'
+describe "DescriptiveStatistics" do
+  require 'descriptive_statistics'
 
-  context "calculated from a Stats object" do
+  subject { [2,6,9,3,5,1,8,3,6,9,2] }
 
-    subject { DescriptiveStatistics::Stats.new([2,6,9,3,5,1,8,3,6,9,2]) }
+  context "with an array" do
+
+    it "responds to all statistics methods" do
+      DescriptiveStatistics.instance_methods.each do |method|
+        expect(subject).respond_to? method
+      end
+    end
 
     it "calculates the number" do
       expect(subject.number).to eql(11.0)

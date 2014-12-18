@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'monkeypatch/spec_helper'
 
 describe "DescriptiveStatistics" do
   require 'descriptive_statistics'

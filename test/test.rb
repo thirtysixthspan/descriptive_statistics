@@ -1,8 +1,9 @@
 require 'simplecov'
-SimpleCov.start
 require 'minitest/autorun'
 require 'csv'
 require './lib/descriptive_statistics'
+
+SimpleCov.command_name 'minitest'
 
 class TestData < MiniTest::Unit::TestCase
 

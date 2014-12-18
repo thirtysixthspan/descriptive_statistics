@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'safe/spec_helper'
 
-describe "DescriptiveStatistics::Stats" do
+describe "DescriptiveStatistics" do
   require 'descriptive_statistics/safe'
 
   context "calculated using class methods" do

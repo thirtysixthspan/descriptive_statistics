@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'monkeypatch/spec_helper'
 
 describe "DescriptiveStatistics" do
   require 'descriptive_statistics'
@@ -6,6 +6,10 @@ describe "DescriptiveStatistics" do
   subject { [] }
 
   context "with a default of nil" do
+
+    before do
+      DescriptiveStatistics.empty_collection_default_value = nil
+    end
 
     it "calculates the number" do
       expect(subject.number).to eql(0.0)

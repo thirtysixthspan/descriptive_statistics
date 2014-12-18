@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'safe/spec_helper'
 
 describe "DescriptiveStatistics" do
   require 'descriptive_statistics/safe'

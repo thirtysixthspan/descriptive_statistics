@@ -1,17 +1,11 @@
-require 'spec_helper'
+require 'safe/spec_helper'
 
 describe "DescriptiveStatistics" do
-  require 'descriptive_statistics'
+  require 'descriptive_statistics/safe'
 
-  subject { [2,6,9,3,5,1,8,3,6,9,2] }
+  context "calculated from a Stats object" do
 
-  context "with an array" do
-
-    it "responds to all statistics methods" do
-      DescriptiveStatistics.instance_methods.each do |method|
-        expect(subject).respond_to? method
-      end
-    end
+    subject { DescriptiveStatistics::Stats.new([2,6,9,3,5,1,8,3,6,9,2]) }
 
     it "calculates the number" do
       expect(subject.number).to eql(11.0)

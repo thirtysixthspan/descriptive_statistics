@@ -24,34 +24,33 @@ descriptive statistics of Numeric sample data in collections that have included 
 When requiring DescriptiveStatistics, the Enumerable module is monkey patched so
 that the statistical methods are available on any instance of a class that has included Enumerable. For example with an Array:
 ```
-> require 'descriptive_statistics'
- => true
-> data = [2,6,9,3,5,1,8,3,6,9,2]
- => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
-> data.number
- => 11.0
-> data.sum
- => 54.0
-> data.mean
- => 4.909090909090909
-> data.median
- => 5.0
-> data.variance
- => 7.7190082644628095
-> data.standard_deviation
- => 2.778310325442932
-> data.percentile(30)
- => 3.0
-> data.percentile(70)
- => 6.0
-> data.percentile_rank(8)
- => 81.81818181818183
-> data.mode
- => 2
-> data.range
- => 8
-> data.descriptive_statistics
- => {:number=>11.0,
+require 'descriptive_statistics'
+data = [2,6,9,3,5,1,8,3,6,9,2]
+# => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
+data.number
+# => 11.0
+data.sum
+# => 54.0
+data.mean
+# => 4.909090909090909
+data.median
+# => 5.0
+data.variance
+# => 7.7190082644628095
+data.standard_deviation
+# => 2.778310325442932
+data.percentile(30)
+# => 3.0
+data.percentile(70)
+# => 6.0
+data.percentile_rank(8)
+# => 81.81818181818183
+data.mode
+# => 2
+data.range
+# => 8
+data.descriptive_statistics
+# => {:number=>11.0,
   :sum=>54,
   :variance=>7.7190082644628095,
   :standard_deviation=>2.778310325442932,
@@ -68,16 +67,14 @@ that the statistical methods are available on any instance of a class that has i
 
 and with other types of objects:
 ```
-> require 'set'
-=> true
-> require 'descriptive_statistics'
-=> true
-> {:a=>1, :b=>2, :c=>3, :d=>4, :e=>5}.mean #Hash
-=> 3.0
-> Set.new([1,2,3,4,5]).mean #Set
-=> 3.0
-> (1..5).mean #Range
-=> 3.0
+require 'set'
+require 'descriptive_statistics'
+{:a=>1, :b=>2, :c=>3, :d=>4, :e=>5}.mean #Hash
+# => 3.0
+Set.new([1,2,3,4,5]).mean #Set
+# => 3.0
+(1..5).mean #Range
+# => 3.0
 ```
 
 including instances of your own classes, when an `each` method is provided that
@@ -97,7 +94,7 @@ foo.bar = 1
 foo.baz = 2
 foo.bat = 3
 foo.mean
-=> 2.0
+# => 2.0
 
 ```
 
@@ -121,7 +118,7 @@ foo.bar = 1
 foo.baz = 2
 foo.bat = 3
 foo.mean
-=> 2.0
+# => 2.0
 ```
 
 and even Structs:
@@ -132,71 +129,89 @@ bowling.sally = 203
 bowling.john = 134
 bowling.peter = 233
 bowling.mean
-=> 190.0
+# => 190.0
 ```
 
 All methods optionally take blocks that operate on object values. For example:
 ```
-> require 'descriptive_statistics'
-> LineItem = Struct.new(:price, :quantity)
-> cart = [ LineItem.new(2.50, 2), LineItem.new(5.10, 9), LineItem.new(4.00, 5) ]
-> total_items = cart.sum(&:quantity)
- => 16
-> total_price = cart.sum{ |i| i.price * i.quantity }
- => 70.9
+require 'descriptive_statistics'
+LineItem = Struct.new(:price, :quantity)
+cart = [ LineItem.new(2.50, 2), LineItem.new(5.10, 9), LineItem.new(4.00, 5) ]
+total_items = cart.sum(&:quantity)
+# => 16
+total_price = cart.sum{ |i| i.price * i.quantity }
+# => 70.9
 ```
 
 Note that you can extend DescriptiveStatistics on individual objects by
 requiring DescriptiveStatistics safely, thus avoiding the monkey patch. For example:
 ```
-> require 'descriptive_statistics/safe'
- => true
-> data = [2,6,9,3,5,1,8,3,6,9,2]
- => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
-> data.extend(DescriptiveStatistics)
- => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
-> data.number
- => 11.0
-> data.sum
- => 54
+require 'descriptive_statistics/safe'
+data = [2,6,9,3,5,1,8,3,6,9,2]
+# => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
+data.extend(DescriptiveStatistics)
+# => [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2]
+data.number
+# => 11.0
+data.sum
+# => 54
 ```
 
 Or, if you prefer leaving your collection pristine, you can create a
 Stats object that references your collection:
 ```
-> require 'descriptive_statistics/safe'
- => true
-> data = [1, 2, 3, 4, 5, 1]
- => [1, 2, 3, 4, 5, 1]
-> stats = DescriptiveStatistics::Stats.new(data)
- => [1, 2, 3, 4, 5, 1]
-> stats.class
- => DescriptiveStatistics::Stats
-> stats.mean
- => 2.6666666666666665
-> stats.median
- => 2.5
-> stats.mode
- => 1
-> data << 2
- => [1, 2, 3, 4, 5, 1, 2]
-> data << 2
- => [1, 2, 3, 4, 5, 1, 2, 2]
-> stats.mode
- => 2
+require 'descriptive_statistics/safe'
+data = [1, 2, 3, 4, 5, 1]
+# => [1, 2, 3, 4, 5, 1]
+stats = DescriptiveStatistics::Stats.new(data)
+# => [1, 2, 3, 4, 5, 1]
+stats.class
+# => DescriptiveStatistics::Stats
+stats.mean
+# => 2.6666666666666665
+stats.median
+# => 2.5
+stats.mode
+# => 1
+data << 2
+# => [1, 2, 3, 4, 5, 1, 2]
+data << 2
+3 =[1, 2, 3, 4, 5, 1, 2, 2]
+stats.mode
+# => 2
 ```
 
 Or you call the statistical methods directly:
 ```
-> require 'descriptive_statistics/safe'
- => true
-> DescriptiveStatistics.mean([1,2,3,4,5])
- => 3.0
-> DescriptiveStatistics.mode([1,2,3,4,5])
- => 1
-> DescriptiveStatistics.variance([1,2,3,4,5])
- => 2.0
+require 'descriptive_statistics/safe'
+# => true
+DescriptiveStatistics.mean([1,2,3,4,5])
+# => 3.0
+DescriptiveStatistics.mode([1,2,3,4,5])
+# => 1
+DescriptiveStatistics.variance([1,2,3,4,5])
+# => 2.0
 ```
+
+Or you can use [Refinements](http://www.ruby-doc.org/core/doc/syntax/refinements_rdoc.html) (available in Ruby >= 2.1) to augment any class that mixes in the Enumerable module. Refinements are lexically scoped and so the statistical methods will only be available in the file where they are used. Note that the lexical scope can be limited to a Class or Module, but only applies to code in that file. This approach provides a great deal of protection against introducing conflicting modifications to Enumerable while retaining the convenience of the monkey patch approach.
+```
+require 'descriptive_statistics/refinement'
+
+class SomeServiceClass
+  using DescriptiveStatistics::Refinement.new(Array)
+
+  def self.calculate_something(array)
+    array.standard_deviation
+  end
+end
+
+[1,2,3].standard_deviation
+# => NoMethodError: undefined method `standard_deviation' for [1, 2, 3]:Array
+
+SomeServiceClass.calculate_something([1,2,3])
+#=> 0.816496580927726
+```
+
 
 Ruby on Rails
 -------------
@@ -220,39 +235,37 @@ Notes
 * All methods return a Float object except for `mode`, which will return a Numeric object from the collection. `mode` will always return nil for empty collections.
 * All methods return nil when the collection is empty, except for `number`, which returns 0.0. This is a different behavior than [ActiveSupport's Enumerable monkey patch of sum](http://apidock.com/rails/Enumerable/sum), which by deafult returns the Fixnum 0 for empty collections. You can change this behavior by specifying the default value returned for empty collections all at once:
   ```
-> require 'descriptive_statistics'
- => true
-> [].mean
- => nil
-> [].sum
- => nil
-> DescriptiveStatistics.empty_collection_default_value = 0.0
- => 0.0
-> [].mean
- => 0.0
-> [].sum
- => 0.0
+require 'descriptive_statistics'
+[].mean
+# => nil
+[].sum
+# => nil
+DescriptiveStatistics.empty_collection_default_value = 0.0
+# => 0.0
+[].mean
+# => 0.0
+[].sum
+# => 0.0
   ```
   or one at a time:
   ```
-> require 'descriptive_statistics'
- => true
-> [].mean
- => nil
-> [].sum
- => nil
-> DescriptiveStatistics.sum_empty_collection_default_value = 0.0
- => 0.0
-> [].mean
- => nil
-> [].sum
- => 0.0
-> DescriptiveStatistics.mean_empty_collection_default_value = 0.0
- => 0.0
-> [].mean
- => 0.0
-> [].sum
- => 0.0
+require 'descriptive_statistics'
+[].mean
+# => nil
+[].sum
+# => nil
+DescriptiveStatistics.sum_empty_collection_default_value = 0.0
+# => 0.0
+[].mean
+# => nil
+[].sum
+# => 0.0
+DescriptiveStatistics.mean_empty_collection_default_value = 0.0
+# => 0.0
+[].mean
+# => 0.0
+[].sum
+# => 0.0
   ```
 
 * The scope of this gem covers [Descriptive Statistics](http://en.wikipedia.org/wiki/Descriptive_statistics) and not Inferential Statistics. From wikipedia:
