@@ -3,7 +3,7 @@ require 'monkeypatch/spec_helper'
 describe "DescriptiveStatistics" do
   require 'descriptive_statistics'
 
-  subject { {:a=>2,:b=>6,:c=>9,:d=>3,:e=>5,:f=>1,:g=>8,:h=>3,:i=>6,:j=>9,:k=>2} }
+  subject { {a:2,b:6,c:9,d:3,e:5,f:1,g:8,h:3,i:6,j:9,k:2} }
 
   context "with a hash" do
 
