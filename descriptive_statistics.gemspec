@@ -7,6 +7,5 @@ Gem::Specification.new do |s|
   s.authors     = ['Derrick Parkhurst', 'Gregory Brown', 'Daniel Farrell', 'Graham Malmgren', 'Guy Shechter', 'Charlie Egan']
   s.email       = 'derrick.parkhurst@gmail.com'
   s.files       = Dir['lib/**/**/*']
-  s.license     = "MIT"
+  s.license     = 'MIT'
 end
-

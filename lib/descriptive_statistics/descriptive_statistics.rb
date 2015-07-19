@@ -1,17 +1,17 @@
 module DescriptiveStatistics
   def descriptive_statistics(&block)
-    return { :number => self.number(&block),
-             :sum => self.sum(&block),
-             :variance => self.variance(&block),
-             :standard_deviation => self.standard_deviation(&block),
-             :min => self.min(&block),
-             :max => self.max(&block),
-             :mean => self.mean(&block),
-             :mode => self.mode(&block),
-             :median => self.median(&block),
-             :range => self.range(&block),
-             :q1 => self.percentile(25, &block),
-             :q2 => self.percentile(50, &block),
-             :q3 => self.percentile(75, &block) }
+    { number: number(&block),
+      sum: sum(&block),
+      variance: variance(&block),
+      standard_deviation: standard_deviation(&block),
+      min: min(&block),
+      max: max(&block),
+      mean: mean(&block),
+      mode: mode(&block),
+      median: median(&block),
+      range: range(&block),
+      q1: percentile(25, &block),
+      q2: percentile(50, &block),
+      q3: percentile(75, &block) }
   end
 end

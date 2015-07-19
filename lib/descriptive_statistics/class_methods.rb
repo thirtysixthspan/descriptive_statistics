@@ -1,10 +1,6 @@
 module DescriptiveStatistics
-
   class << self
-
-    def empty_collection_default_value
-      @empty_collection_default_value
-    end
+    attr_reader :empty_collection_default_value
 
     def empty_collection_default_value=(value)
       @empty_collection_default_value = value
@@ -25,12 +21,10 @@ module DescriptiveStatistics
     def default_values
       @default_values ||= {}
     end
-
   end
 
   DescriptiveStatistics.instance_methods.each do |method|
     module_function method
     public method
   end
-
 end

@@ -1,2 +1,2 @@
-require "descriptive_statistics/safe"
-require "descriptive_statistics/enumerable_extension"
+require 'descriptive_statistics/safe'
+require 'descriptive_statistics/enumerable_extension'
