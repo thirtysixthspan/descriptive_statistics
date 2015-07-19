@@ -5,5 +5,4 @@ module Enumerable
     method = DescriptiveStatistics.instance_method(name)
     define_method(name, method)
   end
-
 end

@@ -1,9 +1,7 @@
 require 'set'
 
 module DescriptiveStatistics
-
   module Support
-
     def self.convert(from_enumerable, &block)
       extend to_float to_value(to_array(from_enumerable), &block)
     end
@@ -22,7 +20,7 @@ module DescriptiveStatistics
       enumerable.map(&:to_f)
     end
 
-    def self.to_value(enumerable, &block)
+    def self.to_value(enumerable, &_block)
       return enumerable unless block_given?
       enumerable.map { |object| yield object }
     end
@@ -37,7 +35,5 @@ module DescriptiveStatistics
         enumerable.each
       end
     end
-
   end
-
 end

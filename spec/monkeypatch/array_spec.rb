@@ -1,64 +1,61 @@
 require 'monkeypatch/spec_helper'
 
-describe "DescriptiveStatistics" do
+describe 'DescriptiveStatistics' do
   require 'descriptive_statistics'
 
-  subject { [2,6,9,3,5,1,8,3,6,9,2] }
+  subject { [2, 6, 9, 3, 5, 1, 8, 3, 6, 9, 2] }
 
-  context "with an array" do
-
-    it "responds to all statistics methods" do
+  context 'with an array' do
+    it 'responds to all statistics methods' do
       DescriptiveStatistics.instance_methods.each do |method|
         expect(subject).respond_to? method
       end
     end
 
-    it "calculates the number" do
+    it 'calculates the number' do
       expect(subject.number).to eql(11.0)
     end
 
-    it "calculates the sum" do
+    it 'calculates the sum' do
       expect(subject.sum).to eql(54.0)
     end
 
-    it "calculates the mean" do
+    it 'calculates the mean' do
       expect(subject.mean).to eql(4.909090909090909)
     end
 
-    it "calculates the median" do
+    it 'calculates the median' do
       expect(subject.median).to eql(5.0)
     end
 
-    it "calculates the variance" do
+    it 'calculates the variance' do
       expect(subject.variance).to eql(7.7190082644628095)
     end
 
-    it "calculates the standard_deviation" do
+    it 'calculates the standard_deviation' do
       expect(subject.standard_deviation).to eql(2.778310325442932)
     end
 
-    it "calculates the percentile" do
+    it 'calculates the percentile' do
       expect(subject.percentile(30)).to eql(3.0)
       expect(subject.percentile(50)).to eql(5.0)
       expect(subject.percentile(70)).to eql(6.0)
     end
 
-    it "calculates the same value for the 50th percentile and median" do
+    it 'calculates the same value for the 50th percentile and median' do
       expect(subject.percentile(50)).to eql(subject.median)
     end
 
-    it "calculates the mode" do
+    it 'calculates the mode' do
       expect(subject.mode).to eql(2)
     end
 
-    it "calculates the range" do
+    it 'calculates the range' do
       expect(subject.range).to eql(8.0)
     end
 
-    it "calculates the percentile rank" do
+    it 'calculates the percentile rank' do
       expect(subject.percentile_rank(8)).to eql(81.81818181818183)
     end
-
-   end
-
+  end
 end
