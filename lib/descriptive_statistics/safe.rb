@@ -1,6 +1,5 @@
 require "descriptive_statistics/support/convert"
 require 'descriptive_statistics/number.rb'
-require 'descriptive_statistics/sum.rb'
 require 'descriptive_statistics/mean.rb'
 require 'descriptive_statistics/median.rb'
 require 'descriptive_statistics/mode.rb'
