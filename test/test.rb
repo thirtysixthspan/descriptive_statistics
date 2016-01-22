@@ -1,5 +1,5 @@
 require 'simplecov'
-require 'minitest/autorun'
+require 'minitest'
 require 'csv'
 require './lib/descriptive_statistics'
 

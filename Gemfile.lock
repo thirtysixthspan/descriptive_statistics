@@ -3,6 +3,7 @@ GEM
   specs:
     diff-lcs (1.2.5)
     docile (1.1.5)
+    minitest (5.8.4)
     multi_json (1.10.1)
     rake (10.4.2)
     rspec (3.1.0)
@@ -27,6 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
   rake
   rspec
   simplecov
