@@ -41,6 +41,10 @@ describe "DescriptiveStatistics" do
         expect(subject.standard_deviation(&:price)).to eql(2.0850659461993044)
       end
 
+      it "calculates the coefficient_of_variation" do
+        expect(subject.coefficient_of_variation(&:price)).to eql(0.6043669409273346)
+      end
+
       it "calculates the percentile" do
         expect(subject.percentile(30, &:price)).to eql(2.3)
         expect(subject.percentile(50, &:price)).to eql(3.8)

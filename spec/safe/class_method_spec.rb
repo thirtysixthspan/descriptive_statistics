@@ -33,7 +33,7 @@ describe "DescriptiveStatistics" do
     end
 
     it "calculates the coefficient of variation" do
-      expect(subject.coefficient_of_variation(data)).to eql (0.5659521033309676)
+      expect(subject.coefficient_of_variation(data)).to eql(0.5659521033309676)
     end
 
     it "calculates the percentile" do
