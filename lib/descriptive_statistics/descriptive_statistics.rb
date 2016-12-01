@@ -1,7 +1,6 @@
 module DescriptiveStatistics
   def descriptive_statistics(&block)
     return { :number => self.number(&block),
-             :sum => self.sum(&block),
              :variance => self.variance(&block),
              :standard_deviation => self.standard_deviation(&block),
              :min => self.min(&block),
