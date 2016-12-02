@@ -3,6 +3,6 @@ module DescriptiveStatistics
     values = Support::convert(collection, &block)
     return DescriptiveStatistics.mean_empty_collection_default_value if values.empty?
 
-    values.sum / values.number
+    values.sum.to_f / values.number
   end
 end
