@@ -5,4 +5,11 @@ module DescriptiveStatistics
 
     Math.sqrt(values.variance)
   end
+
+  def sample_standard_deviation(collection = self, &block)
+    values = Support::convert(collection, &block)
+    return DescriptiveStatistics.standard_deviation_empty_collection_default_value if values.empty?
+
+    Math.sqrt(values.sample_variance)
+  end
 end

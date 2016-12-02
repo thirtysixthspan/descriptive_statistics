@@ -21,7 +21,6 @@ describe "DescriptiveStatistics" do
 
     expect{Test.unrefined}.to raise_error
     expect{Test.refined}.not_to raise_error
-
   end
 
 end
