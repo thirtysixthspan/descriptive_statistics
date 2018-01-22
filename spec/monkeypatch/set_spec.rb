@@ -30,11 +30,13 @@ describe "DescriptiveStatistics" do
     end
 
     it "calculates the variance" do
-      expect(subject.variance).to eql(7.836734693877552)
+      # Because we are testing a Set, only unique values are used.
+      expect(subject.variance).to eql(9.142857142857144)
     end
 
     it "calculates the standard_deviation" do
-      expect(subject.standard_deviation).to eql(2.799416848895061)
+      # Because we are testing a Set, only unique values are used.
+      expect(subject.standard_deviation).to eql(3.023715784073818)
     end
 
     it "calculates the percentile" do
