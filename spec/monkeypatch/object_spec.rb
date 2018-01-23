@@ -34,11 +34,11 @@ describe "DescriptiveStatistics" do
       end
 
       it "calculates the variance" do
-        expect(subject.variance(&:price)).to eql(4.3475)
+        expect(subject.variance(&:price)).to eql(5.796666666666667)
       end
 
       it "calculates the standard_deviation" do
-        expect(subject.standard_deviation(&:price)).to eql(2.0850659461993044)
+        expect(subject.standard_deviation(&:price)).to eql(2.40762677063258)
       end
 
       it "calculates the percentile" do
@@ -84,11 +84,11 @@ describe "DescriptiveStatistics" do
       end
 
       it "calculates the variance" do
-        expect(subject.variance{|v| v.price * v.quantity}).to eql(282.056875)
+        expect(subject.variance{|v| v.price * v.quantity}).to eql(376.0758333333333)
       end
 
       it "calculates the standard_deviation" do
-        expect(subject.standard_deviation{|v| v.price * v.quantity}).to eql(16.79454896685231)
+        expect(subject.standard_deviation{|v| v.price * v.quantity}).to eql(19.392674733861064)
       end
 
       it "calculates the percentile" do
