@@ -4,6 +4,7 @@ module DescriptiveStatistics
              :sum => self.sum(&block),
              :variance => self.variance(&block),
              :standard_deviation => self.standard_deviation(&block),
+             :coefficient_of_variation => self.coefficient_of_variation(&block),
              :min => self.min(&block),
              :max => self.max(&block),
              :mean => self.mean(&block),
