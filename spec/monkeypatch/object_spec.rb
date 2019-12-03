@@ -21,10 +21,6 @@ describe "DescriptiveStatistics" do
         expect(subject.number(&:price)).to eql(4.0)
       end
 
-      it "calculates the sum" do
-        expect(subject.sum(&:price)).to eql(13.8)
-      end
-
       it "calculates the mean" do
         expect(subject.mean(&:price)).to eql(3.45)
       end
@@ -69,10 +65,6 @@ describe "DescriptiveStatistics" do
 
       it "calculates the number" do
         expect(subject.number{|v| v.price * v.quantity}).to eql(4.0)
-      end
-
-      it "calculates the sum" do
-        expect(subject.sum{|v| v.price * v.quantity}).to eql(78.7)
       end
 
       it "calculates the mean" do

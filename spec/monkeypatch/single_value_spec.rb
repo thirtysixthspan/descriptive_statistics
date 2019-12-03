@@ -11,10 +11,6 @@ describe "DescriptiveStatistics" do
       expect(subject.number).to eql(1.0)
     end
 
-    it "calculates the sum" do
-      expect(subject.sum).to eql(2.0)
-    end
-
     it "calculates the mean" do
       expect(subject.mean).to eql(2.0)
     end
